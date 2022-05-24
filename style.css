@@ -184,6 +184,7 @@ body {
     flex-grow: 1;
     background-image: url(img/mine.jpg);
     overflow-y: auto;
+    padding-top: 50px;
 }
 .bottom_chat {
     height: 70px;
@@ -204,4 +205,28 @@ body {
     border: 0;
     padding: 5px;
     font-size: 14px;
+}
+/*-------------------
+    CHAT MESSAGES
+-------------------*/
+.chat_message {
+    width: 100%;
+    padding: 10px 90px;
+}
+.text_align_right {
+    text-align: right;
+}
+.text_align_left {
+    text-align: left;
+}
+.message_sent {
+    background-color: #d5f9ba;
+}
+.message_received {
+    background-color: white;
+}
+.message_received, .message_sent {
+    display: inline-block;
+    padding: 20px;
+    border-radius: 10px;
 }
