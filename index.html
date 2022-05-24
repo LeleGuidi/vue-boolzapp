@@ -18,7 +18,7 @@
     <!-- /CSS  -->
 </head>
 <body>
-    <div class="main_container">
+    <div id="app" class="main_container">
         <div class="messages_container">
             <div class="header_messages">
                 <div class="user_icon">
@@ -31,9 +31,27 @@
                     <i class="fa-solid fa-ellipsis-vertical"></i>
                 </div>
             </div>
-            <div class="notification_messages"></div>
-            <div class="search_messages"></div>
-            <div class="main_messages"></div>
+            <div class="notification_messages">
+                <i class="fa-solid fa-bell-slash"></i>
+                <div class="notification_details">
+                    <p>Ricevi notifiche di nuovi messaggi</p>
+                    <a href="#/">Attiva notifiche desktop</a>
+                </div>
+            </div>
+            <div class="search_messages">
+                <button class="search_btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <input type="text" placeholder="Cerca o inizia una nuova chat">
+            </div>
+            <div class="main_messages">
+                <div v-for="(elm, index) in contacts" class="contact">
+                    <img :src="`img/avatar` + elm.avatar + `.jpg`" alt="elm.name">
+                    <div class="contact_details">
+                        <p class="contact_name">{{elm.name}}</p>
+                        <span class="last_contact_message">Ultimo messaggio inviato</span>
+                    </div>
+                    <span class="last_time_message">12:00</span>
+                </div>
+            </div>
         </div>
         <div class="chat_container">
             <div class="header_chat">
@@ -51,12 +69,15 @@
                 </div>
             </div>
             <div class="main_chat"></div>
-            <div class="bottom_chat"></div>
+            <div class="bottom_chat">
+                <i class="fa-regular fa-face-smile"></i>
+                <input class="text_message" type="text" placeholder="Scrivi un messaggio">
+                <i class="fa-solid fa-microphone"></i>
+            </div>
         </div>
     </div>
     <!-- JS  -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <script src="contacts.js"></script>
     <script src="main.js"></script>
     <!-- /JS  -->
 

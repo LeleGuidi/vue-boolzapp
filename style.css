@@ -11,18 +11,34 @@
 -------------------*/
 :root {
     --font-icon: 20px;
+    --font-13px: 13px;
+    --color-notification: #8EDAFC;
 }
 /*-------------------
     TYPO
 -------------------*/
-.user_preferences i, .chat_preferences i {
+.user_preferences i, .chat_preferences i, .bottom_chat i {
     font-size: var(--font-icon)
 }
-.chat_icon, .user_icon {
-    font-size: 14px;
+.chat_icon, .user_icon, .notification_messages {
+    font-size: var(--font-13px);
 }
-.chat_icon span {
+.chat_icon span, .notification_messages a{
     font-size: 12px;
+}
+.search_messages input::placeholder, .search_messages input {
+    font-size: 12px;
+}
+.search_messages button {
+    font-size: 15px;
+}
+/*-------------------
+    COLOR
+-------------------*/
+.search_messages input::placeholder, .search_messages button, .bottom_chat .text_message::placeholder {
+    color: #b6b9bd;
+}
+.chat_icon span, .notification_messages a, .bottom_chat i {
     color: #6b7376;
 }
 /*-------------------
@@ -78,7 +94,7 @@ body {
     flex-grow: 1;
     gap: 15px;
 }
-.user_icon img, .chat_icon img{
+.user_icon img, .chat_icon img, .notification_messages i{
     border-radius: 50px;
     width: 50px;
     height: 50px;
@@ -91,19 +107,72 @@ body {
     border-right: 1px solid #d6d6d6;
 }
 .notification_messages {
-    background-color: #8EDAFC;
+    background-color: var(--color-notification);
     width: 100%;
     height: 80px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+}
+.notification_messages i {
+    display: inline-block;
+    font-size: var(--font-icon);
+    color: var(--color-notification);
+    background-color: white;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px;
 }
 .search_messages {
     background-color: #fafafa;
     width: 100%;
     height: 50px;
+    padding: 10px;
+    color: #b6b9bd;
+    display: flex;
+    gap: 2px;
+}
+.search_messages button {
+    text-align: center;
+    background-color: white;
+    border: 0;
+    width: 18%;
+}
+.search_messages input {
+    flex-grow: 1;
+    border: 0;
+}
+.search_messages input {
+    padding: 5px;
 }
 .main_messages {
     width: 100%;
     flex-grow: 1;
     overflow-y: auto;
+}
+.contact {
+    display: flex;
+    width: 100%;
+    padding: 10px 20px;
+    gap: 10px;
+    border-top: 1px solid #f5f5f5;
+}
+.contact:hover {
+    background-color: #e9ebeb;
+}
+.contact img {
+    width: 55px;
+    height: 55px;
+    border-radius: 100%;
+}
+.contact .last_contact_message, .contact .last_time_message {
+    color: #b6b9bd;
+    font-size: var(--font-13px);
+}
+.contact .last_time_message {
+    text-align: right;
+    flex-grow: 1;
 }
 /*-------------------
     CHAT
@@ -120,4 +189,19 @@ body {
     height: 70px;
     width: 100%;
     background-color: #f3eeea;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 10px 30px;
+}
+.bottom_chat i {
+    align-self: center;
+}
+.bottom_chat .text_message {
+    flex-grow: 1;
+    border-radius: 10px;
+    border: 0;
+    padding: 5px;
+    font-size: 14px;
 }

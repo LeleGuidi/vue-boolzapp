@@ -1,4 +1,4 @@
-contacts: [
+ontacts: [
     {
         name: 'Michele',
         avatar: '_1',
