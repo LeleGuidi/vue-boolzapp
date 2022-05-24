@@ -11,4 +11,70 @@
 -------------------*/
 body {
     font-family: 'Lato', sans-serif;
+    background: linear-gradient(
+        to bottom,
+        #009688 0vh,
+        #009688 18vh,
+        #DBDBD2 18vh,
+        #DBDBD2 100vh
+    );
+    width: 100%;
+}
+/*-------------------
+    CONTAINER/COMMON
+-------------------*/
+.main_container {
+    max-width: 1200px;
+    height: calc(100vh - 50px);
+    background-color: white;
+    margin: 25px auto;
+    display: flex;
+    flex-wrap: nowrap;
+}
+.messages_container, .chat_container {
+    display: flex;
+    flex-direction: column;
+}
+.header_messages, .header_chat {
+    background-color: #eaeaea;
+    height: 70px;
+    width: 100%;
+}
+/*-------------------
+    MESSAGES
+-------------------*/
+.messages_container {
+    width: 35%;
+    border-right: 1px solid #d6d6d6;
+}
+.notification_messages {
+    background-color: #8EDAFC;
+    width: 100%;
+    height: 80px;
+}
+.search_messages {
+    background-color: #fafafa;
+    width: 100%;
+    height: 50px;
+}
+.main_messages {
+    width: 100%;
+    flex-grow: 1;
+    overflow-y: auto;
+}
+/*-------------------
+    CHAT
+-------------------*/
+.chat_container {
+    width: 65%;
+}
+.main_chat {
+    flex-grow: 1;
+    background-image: url(img/mine.jpg);
+    overflow-y: auto;
+}
+.bottom_chat {
+    height: 70px;
+    width: 100%;
+    background-color: #f3eeea;
 }
