@@ -170,13 +170,12 @@ const app = new Vue({
     methods: {
         sentMessage() {
             let currentDate = new Date();
-            var today = new Date();
-            var dd = String(today.getDate()).padStart(2, '0');
-            var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-            var yyyy = today.getFullYear();
+            // var today = new Date();
+            // var dd = String(today.getDate()).padStart(2, '0');
+            // var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+            // var yyyy = today.getFullYear();
 
-            today = mm + '/' + dd + '/' + yyyy;
-            document.write(today);
+            // today = dd + '/' + mm + '/' + yyyy;
             if(this.newMessage) {
                 let message = {
                     date: currentDate,
@@ -184,7 +183,6 @@ const app = new Vue({
                     status: 'sent'
                 };
                 this.contacts[this.currentContact].messages.push(message);
-                console.log(currentDate)
                 this.newMessage = ``;
 
                 setTimeout( (e) => {

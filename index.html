@@ -72,7 +72,7 @@
                 <div v-for="(elm, index) in contacts[currentContact].messages" class="chat_message" :class="(elm.status == `sent`)? `text_align_right`:`text_align_left`">
                         <div :class="(elm.status == `sent`)? `message_sent` : `message_received`">
                             {{elm.message}}
-                            <span class="time_message">{{messageTime(index)}}</span>
+                            <span class="time_message">messageTime(index)</span>
                         </div>
                 </div>
             </div>
