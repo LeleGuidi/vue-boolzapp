@@ -1,0 +1,9 @@
+/*-------------------
+    COLOR
+-------------------*/
+.search_messages input::placeholder, .search_messages button, .bottom_chat .text_message::placeholder, .time_message {
+    color: #b6b9bd;
+}
+.chat_icon span, .notification_messages a, .bottom_chat i {
+    color: #6b7376;
+}

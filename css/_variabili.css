@@ -1,0 +1,11 @@
+/*-------------------
+    VARIABILI
+-------------------*/
+:root {
+    /* typo */
+    --font-icon: 1.3rem;
+    --font-small: 0.8rem;
+    --font-extra-small: 0.7rem;
+    /* color  */
+    --color-notification: #8EDAFC;
+}

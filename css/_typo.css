@@ -1,0 +1,18 @@
+/*-------------------
+    TYPO
+-------------------*/
+.user_preferences i, .chat_preferences i, .bottom_chat i {
+    font-size: var(--font-icon)
+}
+.chat_icon, .user_icon, .notification_messages {
+    font-size: var(--font-13px);
+}
+.chat_icon span, .notification_messages a{
+    font-size: var(--font-small);
+}
+.search_messages input::placeholder, .search_messages input {
+    font-size: var(--font-extra-small);
+}
+.search_messages button {
+    font-size: 0.9rem;
+}
