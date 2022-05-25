@@ -43,7 +43,7 @@
                 <input type="text" placeholder="Cerca o inizia una nuova chat">
             </div>
             <div class="main_messages">
-                <div v-for="(elm, index) in contacts" class="contact">
+                <div v-for="(elm, index) in contacts" class="contact" @click="currentContact = index" :class="(currentContact == index)? `active`:``">
                     <img :src="`img/avatar` + elm.avatar + `.jpg`" alt="elm.name">
                     <div class="contact_details">
                         <p class="contact_name">{{elm.name}}</p>
@@ -69,18 +69,12 @@
                 </div>
             </div>
             <div class="main_chat">
-                <div class="chat_message text_align_right">
-                        <div class="message_sent" >
-                            Ciao
+                <div v-for="(elm, index) in contacts[currentContact].messages" class="chat_message" :class="(elm.status == `sent`)? `text_align_right`:`text_align_left`">
+                        <div :class="(elm.status == `sent`)? `message_sent` : `message_received`">
+                            {{elm.message}}
                             <span class="time_message">orario</span>
                         </div>
                 </div>
-                <div class="chat_message text_align_left">
-                    <div class="message_received" >
-                        Ciao
-                        <span class="time_message">orario</span>
-                    </div>
-            </div>
             </div>
             <div class="bottom_chat">
                 <i class="fa-regular fa-face-smile"></i>
