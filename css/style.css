@@ -207,7 +207,7 @@ body {
 }
 .time_message {
     position: absolute;
-    bottom: 0.125rem;
-    right: 0.125rem;
+    bottom: 0.2rem;
+    right: 0.3rem;
     font-size: var(--font-extra-small);
 }

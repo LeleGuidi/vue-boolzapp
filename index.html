@@ -47,18 +47,18 @@
                     <img :src="`img/avatar` + elm.avatar + `.jpg`" alt="elm.name">
                     <div class="contact_details">
                         <p class="contact_name">{{elm.name}}</p>
-                        <span class="last_contact_message">Ultimo messaggio inviato</span>
+                        <span class="last_contact_message">lastMessageSent(index)</span>
                     </div>
-                    <span class="last_time_message">12:00</span>
+                    <span class="last_time_message">lastTimeMessageSent(index)</span>
                 </div>
             </div>
         </div>
         <div class="chat_container">
             <div class="header_chat">
                 <div class="chat_icon">
-                    <img src="img/avatar_1.jpg" alt="Michele">
+                    <img :src="`img/avatar` + contacts[currentContact].avatar + `.jpg`" alt="contacts[currentContact].name">
                     <div class="chat_details">
-                        <p>Michele</p>
+                        <p>{{contacts[currentContact].name}}</p>
                         <span>Ultimo accesso oggi alle 12.00</span>
                     </div>
                 </div>
@@ -72,15 +72,15 @@
                 <div v-for="(elm, index) in contacts[currentContact].messages" class="chat_message" :class="(elm.status == `sent`)? `text_align_right`:`text_align_left`">
                         <div :class="(elm.status == `sent`)? `message_sent` : `message_received`">
                             {{elm.message}}
-                            <span class="time_message">Orario</span>
+                            <span class="time_message">{{messageTime(index)}}</span>
                         </div>
                 </div>
             </div>
             <div class="bottom_chat">
                 <i class="fa-regular fa-face-smile"></i>
-                <input class="text_message" type="text" placeholder="Scrivi un messaggio" v-model="newMessage" @keyup.enter="sentMessage()">
+                <input class="text_message" type="text" placeholder="Scrivi un messaggio" v-model="newMessage" @keyup.enter="sentMessage(); scrollToBottom();">
                 <i v-if="(!newMessage)" class="fa-solid fa-microphone"></i>
-                <i v-else="(newMessage)" class="fa-solid fa-arrow-right" @click="sentMessage()"></i>
+                <i v-else="(newMessage)" class="fa-solid fa-arrow-right" @click="sentMessage(); scollToBottom();"></i>
             </div>
         </div>
     </div>
