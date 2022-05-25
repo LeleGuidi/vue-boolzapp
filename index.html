@@ -47,9 +47,9 @@
                     <img :src="`img/avatar` + elm.avatar + `.jpg`" alt="elm.name">
                     <div class="contact_details">
                         <p class="contact_name">{{elm.name}}</p>
-                        <span class="last_contact_message">lastMessageSent(index)</span>
+                        <span class="last_contact_message">{{lastMessageSent(index)}}</span>
                     </div>
-                    <span class="last_time_message">lastTimeMessageSent(index)</span>
+                    <span class="last_time_message">{{lastTimeMessageSent(index)}}</span>
                 </div>
             </div>
         </div>
@@ -72,7 +72,7 @@
                 <div v-for="(elm, index) in contacts[currentContact].messages" class="chat_message" :class="(elm.status == `sent`)? `text_align_right`:`text_align_left`">
                         <div :class="(elm.status == `sent`)? `message_sent` : `message_received`">
                             {{elm.message}}
-                            <span class="time_message">messageTime(index)</span>
+                            <span class="time_message">{{messageTime(index)}}</span>
                         </div>
                 </div>
             </div>

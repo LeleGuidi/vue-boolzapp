@@ -169,13 +169,11 @@ const app = new Vue({
     },
     methods: {
         sentMessage() {
-            let currentDate = new Date();
-            // var today = new Date();
-            // var dd = String(today.getDate()).padStart(2, '0');
-            // var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-            // var yyyy = today.getFullYear();
-
-            // today = dd + '/' + mm + '/' + yyyy;
+            let today = new Date();
+            date = String(today.getDate()).padStart(2, '0') + "/" + String(today.getMonth() + 1).padStart(2, '0') + "/" + today.getFullYear();
+            time = String(today.getHours()).padStart(2, '0') + ":" + String(today.getMinutes()).padStart(2, '0') + ":" + String(today.getSeconds()).padStart(2, '0');
+            let currentDate = `${date} ${time}`
+            console.log(currentDate)
             if(this.newMessage) {
                 let message = {
                     date: currentDate,
@@ -199,27 +197,27 @@ const app = new Vue({
             const container = this.$el.querySelector(".main_chat");
             container.scrollTop = container.scrollHeight;
         },
-        // messageTime(index) {
-        //     let date = this.contacts[this.currentContact].messages[index].date
-        //     let times = date.split(" ");
-        //     let time = times[1];
-        //     let hourMinuteSecond = time.split(`:`);
-        //     let hourMinute = `${hourMinuteSecond[0]}:${hourMinuteSecond[1]}`
-        //     return hourMinute
-        // },
-        // lastTimeMessageSent(index) {
-        //     let i = this.contacts[index].messages.length - 1;
-        //     let date = this.contacts[index].messages[i].date
-        //     let times = date.split(" ");
-        //     let time = times[1];
-        //     let hourMinuteSecond = time.split(`:`);
-        //     let hourMinute = `${hourMinuteSecond[0]}:${hourMinuteSecond[1]}`
-        //     return hourMinute
-        // },
-        // lastMessageSent(index) {
-        //     let i = this.contacts[index].messages.length - 1;
-        //     let text = this.contacts[index].messages[i].message
-        //     return text
-        // }
+        messageTime(index) {
+            let date = this.contacts[this.currentContact].messages[index].date
+            let times = date.split(" ");
+            let time = times[1];
+            let hourMinuteSecond = time.split(`:`);
+            let hourMinute = `${hourMinuteSecond[0]}:${hourMinuteSecond[1]}`
+            return hourMinute
+        },
+        lastTimeMessageSent(index) {
+            let i = this.contacts[index].messages.length - 1;
+            let date = this.contacts[index].messages[i].date
+            let times = date.split(" ");
+            let time = times[1];
+            let hourMinuteSecond = time.split(`:`);
+            let hourMinute = `${hourMinuteSecond[0]}:${hourMinuteSecond[1]}`
+            return hourMinute
+        },
+        lastMessageSent(index) {
+            let i = this.contacts[index].messages.length - 1;
+            let text = this.contacts[index].messages[i].message
+            return text
+        }
     },
 })
