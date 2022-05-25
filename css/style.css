@@ -153,7 +153,7 @@ body {
 .main_chat {
     flex-grow: 1;
     background-image: url(../img/mine.jpg);
-    overflow-y: auto;
+    overflow-y:auto;
     padding-top: 3.125rem;
 }
 .bottom_chat {
@@ -165,6 +165,7 @@ body {
     justify-content: space-between;
     gap: 1.875rem;
     padding: 0.625rem 1.875rem;
+    flex-shrink: 0;
 }
 .bottom_chat i {
     align-self: center;
@@ -175,6 +176,9 @@ body {
     border: 0;
     padding: 0.3125rem;
     font-size: 0.875rem;
+}
+.bottom_chat .fa-arrow-right{
+    font-size: 1.1rem;
 }
 /*-------------------
     CHAT MESSAGES

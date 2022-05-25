@@ -72,14 +72,15 @@
                 <div v-for="(elm, index) in contacts[currentContact].messages" class="chat_message" :class="(elm.status == `sent`)? `text_align_right`:`text_align_left`">
                         <div :class="(elm.status == `sent`)? `message_sent` : `message_received`">
                             {{elm.message}}
-                            <span class="time_message">orario</span>
+                            <span class="time_message">Orario</span>
                         </div>
                 </div>
             </div>
             <div class="bottom_chat">
                 <i class="fa-regular fa-face-smile"></i>
-                <input class="text_message" type="text" placeholder="Scrivi un messaggio">
-                <i class="fa-solid fa-microphone"></i>
+                <input class="text_message" type="text" placeholder="Scrivi un messaggio" v-model="newMessage" @keyup.enter="sentMessage()">
+                <i v-if="(!newMessage)" class="fa-solid fa-microphone"></i>
+                <i v-else="(newMessage)" class="fa-solid fa-arrow-right" @click="sentMessage()"></i>
             </div>
         </div>
     </div>

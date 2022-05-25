@@ -165,8 +165,30 @@ const app = new Vue({
             }
         ],
         currentContact: 0,
+        newMessage: ``,
     },
     methods: {
-        
+        sentMessage() {
+            if(this.newMessage) {
+                let currentDate = new Date();
+                let message = {
+                    date: currentDate,
+                    message: this.newMessage,
+                    status: 'sent'
+                };
+                this.contacts[this.currentContact].messages.push(message);
+                this.newMessage = ``;
+
+                setTimeout( (e) => {
+                    receivedDate = new Date();
+                    message = {
+                    date: currentDate,
+                    message: `ok`,
+                    status: 'received'
+                    };
+                    this.contacts[this.currentContact].messages.push(message)
+                }, 1000);
+            }
+        },
     },
-}) 
+})
