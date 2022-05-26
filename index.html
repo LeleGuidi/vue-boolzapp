@@ -39,11 +39,11 @@
                 </div>
             </div>
             <div class="search_messages">
-                <button class="search_btn"><i class="fa-solid fa-magnifying-glass"></i></button>
-                <input type="text" placeholder="Cerca o inizia una nuova chat">
+                <button class="search_btn" @click="searchContacts()"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <input type="text" placeholder="Cerca o inizia una nuova chat" v-model="searchContact" @keypress="searchContacts()">
             </div>
             <div class="main_messages">
-                <div v-for="(elm, index) in contacts" class="contact" @click="currentContact = index" :class="(currentContact == index)? `active`:``">
+                <div v-for="(elm, index) in contacts" class="contact" @click="currentContact = index" :class="(currentContact == index)? `active`:``" v-if="elm.visible == true">
                     <img :src="`img/avatar` + elm.avatar + `.jpg`" alt="elm.name">
                     <div class="contact_details">
                         <p class="contact_name">{{elm.name}}</p>

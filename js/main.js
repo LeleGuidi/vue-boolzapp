@@ -166,6 +166,7 @@ const app = new Vue({
         ],
         currentContact: 0,
         newMessage: ``,
+        searchContact: ``,
     },
     methods: {
         sentMessage() {
@@ -218,6 +219,21 @@ const app = new Vue({
             let i = this.contacts[index].messages.length - 1;
             let text = this.contacts[index].messages[i].message
             return text
+        },
+        searchContacts(searchContact) {
+            if(this.searchContact){
+                for(let i = 0; i < this.contacts.length; i++) {
+                    if(this.contacts[i].name.includes(this.searchContact)) {
+                        this.contacts[i].visible = true;
+                    } else {
+                        this.contacts[i].visible = false;
+                    }
+                }
+            } else {
+                for(let i = 0; i < this.contacts.length; i++) {
+                        this.contacts[i].visible = true;
+                    }
+            }
         }
     },
 })
