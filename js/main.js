@@ -170,11 +170,7 @@ const app = new Vue({
     },
     methods: {
         sentMessage() {
-
-            let today = new Date();
-            date = String(today.getDate()).padStart(2, '0') + "/" + String(today.getMonth() + 1).padStart(2, '0') + "/" + today.getFullYear();
-            time = String(today.getHours()).padStart(2, '0') + ":" + String(today.getMinutes()).padStart(2, '0') + ":" + String(today.getSeconds()).padStart(2, '0');
-            let currentDate = `${date} ${time}`
+            let currentDate = this.currentTime()
 
             if(this.newMessage) {
                 let message = {
@@ -184,23 +180,23 @@ const app = new Vue({
                 };
                 this.contacts[this.currentContact].messages.push(message);
                 this.newMessage = ``;
-
-                setTimeout( (e) => {
-                    message = {
-                    date: currentDate,
-                    message: `ok`,
-                    status: 'received'
-                    };
-                    this.contacts[this.currentContact].messages.push(message)
-
-                    const elem = this.$el.querySelector('.main_chat');
-                    elem.scrollTop = elem.scrollHeight;
-
-                }, 1000);
+                setTimeout( () => {this.cpuMessage(this.currentContact)}, 1000)
             }
         },
-        messageTime(index) {
 
+        cpuMessage(index) {
+            let currentDate = this.currentTime()
+            message = {
+                date: currentDate,
+                message: `ok`,
+                status: 'received'
+            };
+            this.contacts[index].messages.push(message)
+
+            this.scrollToBottom()
+        },
+
+        messageTime(index) {
             let date = this.contacts[this.currentContact].messages[index].date
             let times = date.split(" ");
             let time = times[1];
@@ -208,22 +204,23 @@ const app = new Vue({
             let hourMinute = `${hourMinuteSecond[0]}:${hourMinuteSecond[1]}`
             return hourMinute
         },
-        lastTimeMessageSent(index) {
 
+        lastTimeMessageSent(index) {
             let i = this.contacts[index].messages.length - 1;
-            let date = this.contacts[index].messages[i].date
+            let date = this.contacts[index].messages[i].date;
             let times = date.split(" ");
             let time = times[1];
             let hourMinuteSecond = time.split(`:`);
             let hourMinute = `${hourMinuteSecond[0]}:${hourMinuteSecond[1]}`
             return hourMinute
         },
-        lastMessageSent(index) {
 
+        lastMessageSent(index) {
             let i = this.contacts[index].messages.length - 1;
             let text = this.contacts[index].messages[i].message
             return text
         },
+        
         searchContacts() {
             if(this.searchContact){
                 for(let i = 0; i < this.contacts.length; i++) {
@@ -239,9 +236,17 @@ const app = new Vue({
                     }
             }
         },
+
         scrollToBottom() {
             const elem = this.$el.querySelector('.main_chat');
             elem.scrollTop = elem.scrollHeight;
+        },
+
+        currentTime() {
+            let today = new Date();
+            date = String(today.getDate()).padStart(2, '0') + "/" + String(today.getMonth() + 1).padStart(2, '0') + "/" + today.getFullYear();
+            time = String(today.getHours()).padStart(2, '0') + ":" + String(today.getMinutes()).padStart(2, '0') + ":" + String(today.getSeconds()).padStart(2, '0');
+            return currentDate = `${date} ${time}`
         }
     },
 })
