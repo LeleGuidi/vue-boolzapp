@@ -171,7 +171,7 @@ const app = new Vue({
     methods: {
         sentMessage() {
             let currentDate = this.currentTime()
-
+            let index = this.currentContact
             if(this.newMessage) {
                 let message = {
                     date: currentDate,
@@ -180,7 +180,7 @@ const app = new Vue({
                 };
                 this.contacts[this.currentContact].messages.push(message);
                 this.newMessage = ``;
-                setTimeout( () => {this.cpuMessage(this.currentContact)}, 1000)
+                setTimeout( () => {this.cpuMessage(index)}, 1000)
             }
         },
 
