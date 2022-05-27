@@ -78,7 +78,7 @@
             </div>
             <div class="bottom_chat">
                 <i class="fa-regular fa-face-smile"></i>
-                <input class="text_message" type="text" placeholder="Scrivi un messaggio" v-model="newMessage" @keyup.enter="sentMessage(); scrollToBottom();">
+                <input class="text_message" type="text" placeholder="Scrivi un messaggio" v-model="newMessage" @keyup.enter="sentMessage(); scrollToBottom()">
                 <i v-if="(!newMessage)" class="fa-solid fa-microphone"></i>
                 <i v-else="(newMessage)" class="fa-solid fa-arrow-right" @click="sentMessage(); scollToBottom();"></i>
             </div>

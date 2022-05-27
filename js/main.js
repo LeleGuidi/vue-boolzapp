@@ -170,11 +170,12 @@ const app = new Vue({
     },
     methods: {
         sentMessage() {
+
             let today = new Date();
             date = String(today.getDate()).padStart(2, '0') + "/" + String(today.getMonth() + 1).padStart(2, '0') + "/" + today.getFullYear();
             time = String(today.getHours()).padStart(2, '0') + ":" + String(today.getMinutes()).padStart(2, '0') + ":" + String(today.getSeconds()).padStart(2, '0');
             let currentDate = `${date} ${time}`
-            console.log(currentDate)
+
             if(this.newMessage) {
                 let message = {
                     date: currentDate,
@@ -191,14 +192,15 @@ const app = new Vue({
                     status: 'received'
                     };
                     this.contacts[this.currentContact].messages.push(message)
+
+                    const elem = this.$el.querySelector('.main_chat');
+                    elem.scrollTop = elem.scrollHeight;
+
                 }, 1000);
             }
         },
-        scrollToBottom() {
-            const container = this.$el.querySelector(".main_chat");
-            container.scrollTop = container.scrollHeight;
-        },
         messageTime(index) {
+
             let date = this.contacts[this.currentContact].messages[index].date
             let times = date.split(" ");
             let time = times[1];
@@ -207,6 +209,7 @@ const app = new Vue({
             return hourMinute
         },
         lastTimeMessageSent(index) {
+
             let i = this.contacts[index].messages.length - 1;
             let date = this.contacts[index].messages[i].date
             let times = date.split(" ");
@@ -216,11 +219,12 @@ const app = new Vue({
             return hourMinute
         },
         lastMessageSent(index) {
+
             let i = this.contacts[index].messages.length - 1;
             let text = this.contacts[index].messages[i].message
             return text
         },
-        searchContacts(searchContact) {
+        searchContacts() {
             if(this.searchContact){
                 for(let i = 0; i < this.contacts.length; i++) {
                     if(this.contacts[i].name.toLowerCase().includes(this.searchContact.toLowerCase())) {
@@ -234,6 +238,15 @@ const app = new Vue({
                         this.contacts[i].visible = true;
                     }
             }
+        },
+        scrollToBottom() {
+            const elem = this.$el.querySelector('.main_chat');
+            elem.scrollTop = elem.scrollHeight;
         }
     },
 })
+
+
+
+
+
