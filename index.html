@@ -70,7 +70,8 @@
             </div>
             <div class="main_chat">
                 <div v-for="(elm, index) in contacts[currentContact].messages" class="chat_message" :class="(elm.status == `sent`)? `text_align_right`:`text_align_left`">
-                        <div :class="(elm.status == `sent`)? `message_sent` : `message_received`">
+                        <div :class="(elm.status == `sent`)? `message_sent` : `message_received`" @mouseover="optionMessVisible = true" @mouseleave="optionMessVisible = false">
+                            <i class="fa-solid fa-angle-down option_message" :class="(elm.status == `sent`)? `opt_ms_green` : `opt_ms_white`" v-show="(optionMessVisible == true)"></i>
                             {{elm.message}}
                             <span class="time_message">{{messageTime(index)}}</span>
                         </div>

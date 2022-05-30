@@ -167,6 +167,7 @@ const app = new Vue({
         currentContact: 0,
         newMessage: ``,
         searchContact: ``,
+        optionMessVisible: false,
     },
     methods: {
         sentMessage() {
@@ -222,6 +223,7 @@ const app = new Vue({
         },
         
         searchContacts() {
+            //Si poteva usare un foreach
             if(this.searchContact){
                 for(let i = 0; i < this.contacts.length; i++) {
                     if(this.contacts[i].name.toLowerCase().includes(this.searchContact.toLowerCase())) {
